@@ -40,7 +40,7 @@
 
                                 ?>
                                 <span class="post-date"><i class="fa fa-clock-o"></i> {{ $newsDate }}</span>
-{{--                                <span class="post-hits"><i class="fa fa-eye"></i> 21</span>--}}
+                                <span class="post-hits"><i class="fa fa-eye"></i> {{$news->reads}}</span>
 {{--                                <span class="post-comment"><i class="fa fa-comments-o"></i>--}}
 {{--								<a href="#" class="comments-link"><span>01</span></a></span>--}}
                             </div>

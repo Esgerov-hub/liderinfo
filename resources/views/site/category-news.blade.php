@@ -50,6 +50,7 @@
 
                                             ?>
                                             <span class="post-date">{{ $newsDate }}</span>
+                                            <span class="post-hits"><i class="fa fa-eye"></i> {{$news->reads}}</span>
                                             {{--<span class="post-comment pull-right"><i class="fa fa-comments-o"></i>
 											<a href="#" class="comments-link"><span>03</span></a></span>--}}
                                         </div>
@@ -131,6 +132,7 @@
                                                 </h2>
                                                 <div class="post-meta">
                                                     <span class="post-date">{{ $formattedDate }}</span>
+                                                    <span class="post-hits"><i class="fa fa-eye"></i> {{$last->reads}}</span>
                                                 </div>
                                             </div><!-- Post content end -->
                                         </div><!-- Post block style end -->

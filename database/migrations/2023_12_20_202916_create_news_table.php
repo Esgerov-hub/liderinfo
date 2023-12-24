@@ -27,6 +27,7 @@ class CreateNewsTable extends Migration
             $table->json('full_text')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->string('type')->nullable();
+            $table->integer('reads')->default(0);
             $table->timestamps();
         });
     }

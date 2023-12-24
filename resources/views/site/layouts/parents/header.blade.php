@@ -89,7 +89,7 @@
             <div class="col-md-3 col-sm-12">
                 <div class="logo">
                     <a href="{{ route('site.index') }}">
-                        <img src="{{ asset('site/logo.jpg') }}" style="max-width: 87px;!important;" alt="liderinfor.org">
+                        <img src="{{ asset('site/logo.jpeg') }}" style="max-width: 87px;!important;" alt="liderinfor.org">
                     </a>
                 </div>
             </div><!-- logo col end -->

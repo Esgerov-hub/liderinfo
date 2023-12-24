@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class IndexController extends Controller
 {
@@ -44,6 +45,13 @@ class IndexController extends Controller
         if (empty($news))
         {
             return self::not_found();
+        }
+
+
+        $viewed = Session::get('reads', []);
+        if (!in_array($news->id, $viewed)) {
+            $news->increment('reads');
+            Session::push('reads', $news->id);
         }
         $lastNews = News::where(['status'=>1])->orderBy('created_at','DESC')->take(3)->get();
         return view('site.news-detail',compact('news','lastNews'));

@@ -1,0 +1,82 @@
+version: '3.8'
+services:
+    # PHP Application
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: laravel-app
+        container_name: laravel-app
+        restart: unless-stopped
+        tty: true
+        environment:
+            - "DB_HOST=db"
+            - "REDIS_HOST=redis"
+            - "MAIL_HOST=mailhog"
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - db
+            - redis
+        networks:
+            - laravel
+
+    # Nginx Service
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "8000:80"
+        volumes:
+            - ./:/var/www
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+        networks:
+            - laravel
+
+    # MySQL Database
+    db:
+        image: mysql:5.7
+        container_name: mysql
+        restart: unless-stopped
+        tty: true
+        environment:
+            MYSQL_DATABASE: lider_info
+            MYSQL_USER: root
+            MYSQL_PASSWORD:
+            MYSQL_ROOT_PASSWORD:
+        volumes:
+            - dbdata:/var/lib/mysql
+        networks:
+            - laravel
+
+    # Redis
+    redis:
+        image: redis:alpine
+        container_name: redis
+        restart: unless-stopped
+        tty: true
+        networks:
+            - laravel
+
+    # MailHog (for mail)
+    mailhog:
+        image: mailhog/mailhog
+        container_name: mailhog
+        restart: unless-stopped
+        ports:
+            - "1025:1025"
+            - "8025:8025"
+        networks:
+            - laravel
+
+# Volumes
+volumes:
+    dbdata:
+        driver: local
+
+# Networks
+networks:
+    laravel:
+        driver: bridge
