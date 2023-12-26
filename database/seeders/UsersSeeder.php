@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,13 +15,26 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'Ənvər',
-            'sur_name' => 'Əsgərov',
-            'phone' => '+994507027093',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('123456'),
-            'status' => 1
-        ]);
+        $adminUser = User::where('email', 'admin@gmail.com')->first();
+
+        if ($adminUser) {
+            $adminUser->update([
+                'name' => 'Ənvər',
+                'sur_name' => 'Əsgərov',
+                'phone' => '+994507027093',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('123456'),
+                'status' => 1
+            ]);
+        } else {
+            DB::table('users')->insert([
+                'name' => 'Sexavet',
+                'sur_name' => 'Ismayilov',
+                'phone' => '++994554791864',
+                'email' => 'sexavetismayilov@gmail.com',
+                'password' => bcrypt('123456'),
+                'status' => 1
+            ]);
+        }
     }
 }

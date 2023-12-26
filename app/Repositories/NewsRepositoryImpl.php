@@ -13,7 +13,7 @@ class NewsRepositoryImpl implements CategoryRepository
     public function __construct()
     {
         $this->model  = new News();
-        $this->news = News::paginate(15);
+        $this->news = News::orderBy('id','desc')->get();
     }
 
     public function getAll()
