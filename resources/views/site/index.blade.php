@@ -25,7 +25,7 @@
 
                                     ?>
                                     <span class="post-date">{{$slideDate}}</span>
-                                    <span class="post-hits"><i class="fa fa-eye"></i> {{$slide->reads}}</span>
+{{--                                    <span class="post-hits"><i class="fa fa-eye"></i> {{$slide->reads}}</span>--}}
                                 </div>
                             </div><!--/ Featured post end -->
 
@@ -70,7 +70,7 @@
 
                                         ?>
                                         <span class="post-date">{{$newsDate}}</span>
-                                        <span class="post-hits"><i class="fa fa-eye"></i> {{$news->reads}}</span>
+{{--                                        <span class="post-hits"><i class="fa fa-eye"></i> {{$news->reads}}</span>--}}
                                     </div>
                                     <p>{{ json_decode($news, true)['text']['az'] }}</p>
                                 </div><!-- Post content end -->
@@ -149,7 +149,7 @@
                                                 </h2>
                                                 <div class="post-meta">
                                                     <span class="post-date">{{ $formattedDate }}</span>
-                                                    <span class="post-hits"><i class="fa fa-eye"></i> {{$last->reads}}</span>
+{{--                                                    <span class="post-hits"><i class="fa fa-eye"></i> {{$last->reads}}</span>--}}
                                                 </div>
                                             </div><!-- Post content end -->
                                         </div><!-- Post block style end -->

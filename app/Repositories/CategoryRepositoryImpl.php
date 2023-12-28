@@ -13,7 +13,7 @@ class CategoryRepositoryImpl implements CategoryRepository
     public function __construct()
     {
         $this->model  = new Category();
-        $this->categories = Category::orderBy('id','desc')->get();
+        $this->categories = Category::paginate(15);
     }
 
     public function getAll()

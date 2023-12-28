@@ -29,7 +29,7 @@ class IndexController extends Controller
         {
             return self::not_found();
         }
-        $newsItems = $news_category->news()->paginate(2);
+        $newsItems = $news_category->news()->paginate(10);
         $lastNews = News::where(['status'=>1,'category_id'=>$news_category->id])->orderBy('created_at','DESC')->take(3)->get();
         return view('site.category-news',compact('news_category','newsItems','lastNews'));
     }
